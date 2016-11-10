@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@+id/linearLayout"
+android:orientation="vertical"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+<ScrollView
+    android:id="@+id/left_side_scroller"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/ip_address_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:hint="@string/option1"
+            android:textIsSelectable="true"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+        <EditText
+            android:id="@+id/ip_address"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:hint="@string/option1"
+
+            android:textAlignment="center"
+            android:ems="10">
+
+            <requestFocus/>
+
+        </EditText>
+
+        <TextView
+            android:id="@+id/port_number_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:hint="@string/option2"
+            android:textIsSelectable="true"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+        <EditText
+            android:id="@+id/port_number"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:inputType="numberDecimal"
+            android:hint="@string/option2"
+
+            android:textAlignment="center"
+            android:ems="10">
+
+        </EditText>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/default_config_button"
+                    android:layout_column="0"
+                    android:layout_width="match_parent"
+                    android:ems="9"
+                    android:textStyle="bold"
+                    android:text="@string/default_configuration"
+                    android:textColor="@android:color/white"
+                    />
+
+                <Button
+                    android:id="@+id/modify_button"
+                    android:layout_column="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="9"
+                    android:textStyle="bold"
+                    android:text="@string/submit_configuration"
+                    android:textColor="@android:color/white"
+                    />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/connect_button"
+                    android:layout_column="0"
+                    android:layout_width="match_parent"
+                    android:ems="10"
+                    android:textStyle="bold"
+                    android:text="@string/connect_button"
+                    android:textColor="@android:color/white"
+                    />
+
+                <Button
+                    android:id="@+id/disconnect_button"
+                    android:layout_column="2"
+                    android:layout_width="match_parent"
+                    android:ems="10"
+                    android:textStyle="bold"
+                    android:text="@string/disconnect_button"
+                    android:textColor="@android:color/white"
+                    />
+
+            </TableRow>
+
+        </TableLayout>
+
+    </LinearLayout>
+
+</ScrollView>
+
+</LinearLayout>

@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -49,5 +50,42 @@
         android:text="Enviar Comando"
         android:layout_below="@+id/tf_comando"
         android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/arrow_up_float"
+        android:layout_below="@+id/btn_send_Hardcode"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/btn_avanzar" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/arrow_down_float"
+        android:layout_below="@+id/btn_avanzar"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/btn_retroc" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/arrow_down_float"
+        android:id="@+id/btn_izq"
+        android:layout_below="@+id/btn_send_Hardcode"
+        android:layout_alignRight="@+id/tv_comando_enviado"
+        android:layout_alignEnd="@+id/tv_comando_enviado"
+        android:layout_marginTop="15dp" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/arrow_up_float"
+
+        android:id="@+id/btn_dere"
+        android:layout_alignTop="@+id/btn_izq"
+        android:layout_alignLeft="@+id/tv_comando_enviado"
+        android:layout_alignStart="@+id/tv_comando_enviado" />
+
 
 </RelativeLayout>

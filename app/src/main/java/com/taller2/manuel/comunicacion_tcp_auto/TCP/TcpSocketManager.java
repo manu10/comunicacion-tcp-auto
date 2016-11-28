@@ -1,8 +1,8 @@
 package com.taller2.manuel.comunicacion_tcp_auto.TCP;
 
-import java.io.BufferedReader;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
+
 import java.net.Socket;
 
 public class TcpSocketManager {
@@ -68,26 +68,26 @@ public class TcpSocketManager {
         else
             return "Datos no enviados por no existir conexión.";
     }
-
-    public static char receiveCharFromSocket(){
-        if (isSocketConnected()){
-            char result = 0;
-            Socket socket = TcpSocketData.getInstance().getSocket();
-            BufferedReader input = null;
-            try {
-                input = new BufferedReader(new InputStreamReader(socket.getInputStream()), 50);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
-                result = (char) input.read();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return result;
-        }
-        return 0;
-    }
+//
+//    public static char receiveCharFromSocket(){
+//        if (isSocketConnected()){
+//            char result = 0;
+//            Socket socket = TcpSocketData.getInstance().getSocket();
+//            BufferedReader input;
+//            try {
+//                input = new BufferedReader(new InputStreamReader(socket.getInputStream()), 50);
+//                try {
+//                    result = (char) input.read();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            return result;
+//        }
+//        return 0;
+//    }
 
     private static boolean isSocketConnected(){
         Socket socket = TcpSocketData.getInstance().getSocket();

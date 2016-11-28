@@ -1,13 +1,17 @@
 package com.taller2.manuel.comunicacion_tcp_auto.Fragments;
 
-import android.app.Fragment;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.taller2.manuel.comunicacion_tcp_auto.ToastManager;
@@ -15,7 +19,7 @@ import com.taller2.manuel.comunicacion_tcp_auto.R;
 import com.taller2.manuel.comunicacion_tcp_auto.TCP.TcpSocketData;
 import com.taller2.manuel.comunicacion_tcp_auto.TCP.TcpSocketManager;
 
-public class ConfigurationFragment extends AppCompatDialogFragment implements View.OnClickListener {
+public class ConfigurationFragment extends AppCompatDialogFragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     private EditText ip_address;
     private EditText port_number;
@@ -24,6 +28,7 @@ public class ConfigurationFragment extends AppCompatDialogFragment implements Vi
     private Button connect_button;
     private Button disconnect_button;
     private Toast toast;
+    private Spinner spinner;
 
     public ConfigurationFragment() {
     }
@@ -47,6 +52,14 @@ public class ConfigurationFragment extends AppCompatDialogFragment implements Vi
             port_number = ((EditText) v.findViewById(R.id.port_number));
             port_number.setText(String.valueOf(TcpSocketData.getInstance().getPortNumber()));
             toast = new Toast(getActivity().getApplicationContext());
+            spinner = (Spinner) v.findViewById(R.id.spinner);
+            // Create an ArrayAdapter using the string array and a default spinner layout
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
+                    R.array.options_obj_det, android.R.layout.simple_spinner_item);
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            // Apply the adapter to the spinner
+            spinner.setAdapter(adapter);
         }
 
         return v;
@@ -58,6 +71,7 @@ public class ConfigurationFragment extends AppCompatDialogFragment implements Vi
         modify_button.setOnClickListener(this);
         connect_button.setOnClickListener(this);
         disconnect_button.setOnClickListener(this);
+        spinner.setOnItemSelectedListener(this);
     }
 
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -76,8 +90,8 @@ public class ConfigurationFragment extends AppCompatDialogFragment implements Vi
                 ToastManager.displayInformationMessage(TcpSocketManager.disconnectFromSocket(), toast, getActivity());
                 break;
             case R.id.default_config_button:
-                ip_address.setText("192.168.0.4");
-                port_number.setText("80");
+                ip_address.setText(R.string.IP_default);
+                port_number.setText(R.string.PORT_default);
                 break;
             case R.id.modify_button:
                 if (ip_address.getText().toString().isEmpty() || port_number.getText().toString().isEmpty())
@@ -91,4 +105,19 @@ public class ConfigurationFragment extends AppCompatDialogFragment implements Vi
         }
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        //Comandos en mayuscula significan que no se van a ejecutar sino guardar configuracion
+        String comando = (position == 0) ? getContext().getString(R.string.comando_obst_frenar) : getContext().getString(R.string.comando_obst_cambiar);
+        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(getString(R.string.option_selected_key), comando);
+        editor.apply();
+        TcpSocketManager.sendDataToSocket(comando);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }

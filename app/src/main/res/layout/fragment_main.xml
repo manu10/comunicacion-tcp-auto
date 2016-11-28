@@ -9,83 +9,226 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.taller2.manuel.comunicacion_tcp_auto.MainActivity$PlaceholderFragment">
 
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:id="@+id/tv_comando_enviado"-->
+    <!--android:text="Comando enviado"-->
+    <!--android:layout_below="@+id/btn_send_voice"-->
+    <!--android:layout_centerHorizontal="true" />-->
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:id="@+id/tv_dist"-->
+    <!--android:text="Distancia:"-->
+    <!--android:layout_below="@+id/tv_comando_enviado"-->
+    <!--android:layout_centerHorizontal="true" />-->
 
-    <TextView
-        android:id="@+id/section_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
+    <!--<EditText-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:inputType="textPersonName"-->
+    <!--android:ems="10"-->
+    <!--android:id="@+id/tf_comando"-->
+    <!--android:hint="avanzar"-->
+    <!--android:layout_alignParentTop="true"-->
+    <!--android:layout_alignRight="@+id/btn_send_Hardcode"-->
+    <!--android:layout_alignEnd="@+id/btn_send_Hardcode" />-->
+
+
+    <!--<Button-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:id="@+id/btn_send_Hardcode"-->
+    <!--android:text="Enviar Comando"-->
+    <!--android:layout_below="@+id/tf_comando"-->
+    <!--android:layout_alignParentLeft="true"-->
+    <!--android:layout_alignParentStart="true" />-->
+
+
+    <!--<Button-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:id="@+id/btn_send_voice"-->
+    <!--android:text="Comando por voz"-->
+    <!--android:layout_alignParentTop="true"-->
+    <!--android:layout_toRightOf="@+id/tv_dist"-->
+    <!--android:layout_toEndOf="@+id/tv_dist"-->
+    <!--android:layout_above="@+id/btn_avanzar" />-->
+
+
+    <!--<ImageButton-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--app:srcCompat="@android:drawable/arrow_up_float"-->
+    <!--android:id="@+id/btn_avanzar"-->
+    <!--android:layout_marginTop="34dp"-->
+    <!--android:layout_below="@+id/btn_send_Hardcode"-->
+    <!--android:layout_centerHorizontal="true" />-->
+
+    <!--<ImageButton-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--app:srcCompat="@android:drawable/arrow_down_float"-->
+    <!--android:id="@+id/btn_retroc"-->
+    <!--android:layout_below="@+id/btn_avanzar"-->
+    <!--android:layout_centerHorizontal="true" />-->
+
+    <!--<ImageButton-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--app:srcCompat="@android:drawable/arrow_down_float"-->
+    <!--android:id="@+id/btn_izq"-->
+    <!--android:layout_below="@+id/btn_avanzar"-->
+    <!--android:layout_alignRight="@+id/tv_comando_enviado"-->
+    <!--android:layout_alignEnd="@+id/tv_comando_enviado" />-->
+
+    <!--<ImageButton-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--app:srcCompat="@android:drawable/arrow_up_float"-->
+
+    <!--android:id="@+id/btn_dere"-->
+    <!--android:layout_alignTop="@+id/btn_izq"-->
+    <!--android:layout_toLeftOf="@+id/btn_avanzar"-->
+    <!--android:layout_toStartOf="@+id/btn_avanzar" />-->
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/linearLayout">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/tf_comando"
+                android:hint="avanzar"/>
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_send_Hardcode"
+                android:text="Enviar Comando"/>
+        </LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/btn_emeg_stop"
+            android:text="FRENADA\nDE\nEMERG"
+            android:textColor="@color/colorAccent"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="86dp"
+            android:id="@+id/btn_send_voice"
+            android:text="Comando por voz"/>
+    </LinearLayout>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_comando_enviado"
         android:text="Comando enviado"
-        android:layout_below="@+id/btn_send_voice"
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_dist"
+        android:text="Distancia:"
+        android:layout_below="@+id/tv_comando_enviado"
         android:layout_centerHorizontal="true" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/tf_comando"
-        android:hint="avanzar"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/section_label"
-        android:layout_toEndOf="@+id/section_label" />
+    <!--<ImageButton-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:srcCompat="@android:drawable/arrow_up_float"-->
+        <!--android:id="@+id/btn_avanzar"-->
+        <!--android:layout_marginTop="34dp"-->
+        <!--android:layout_below="@+id/linearLayout"-->
+        <!--android:layout_centerHorizontal="true" />-->
 
-    <Button
+    <!--<ImageButton-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:srcCompat="@android:drawable/arrow_down_float"-->
+        <!--android:id="@+id/btn_retroc"-->
+        <!--android:layout_below="@+id/btn_avanzar"-->
+        <!--android:layout_centerHorizontal="true" />-->
+
+    <!--<ImageButton-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:srcCompat="@android:drawable/arrow_down_float"-->
+        <!--android:id="@+id/btn_dere"-->
+        <!--android:layout_below="@+id/btn_avanzar"-->
+        <!--android:layout_alignRight="@+id/tv_comando_enviado"-->
+        <!--android:layout_alignEnd="@+id/tv_comando_enviado" />-->
+
+    <!--<ImageButton-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:srcCompat="@android:drawable/arrow_down_float"-->
+        <!--android:id="@+id/btn_izq"-->
+        <!--android:layout_below="@+id/btn_avanzar"-->
+        <!--android:layout_alignLeft="@+id/tv_comando_enviado"-->
+        <!--android:layout_alignStart="@+id/tv_comando_enviado" />-->
+
+    <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_send_voice"
-        android:text="Comando por voz"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/btn_send_Hardcode"
-        android:layout_alignStart="@+id/btn_send_Hardcode" />
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/tv_dist">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_send_Hardcode"
-        android:text="Enviar Comando"
-        android:layout_below="@+id/tf_comando"
-        android:layout_centerHorizontal="true" />
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/arrow_up_float"
-        android:layout_below="@+id/btn_send_Hardcode"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/btn_avanzar" />
+            <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/arrow_up_float"
+            android:id="@+id/btn_avanzar"
+            android:layout_column="1"
+            />
+        </TableRow>
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/arrow_down_float"
-        android:layout_below="@+id/btn_avanzar"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/btn_retroc" />
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/arrow_down_float"
-        android:id="@+id/btn_izq"
-        android:layout_below="@+id/btn_send_Hardcode"
-        android:layout_alignRight="@+id/tv_comando_enviado"
-        android:layout_alignEnd="@+id/tv_comando_enviado"
-        android:layout_marginTop="15dp" />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@android:drawable/arrow_down_float"
+                android:id="@+id/btn_izq"
+                android:layout_column="0" />
+            <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/arrow_down_float"
+            android:id="@+id/btn_retroc"
+            android:layout_column="1" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/arrow_up_float"
-
-        android:id="@+id/btn_dere"
-        android:layout_alignTop="@+id/btn_izq"
-        android:layout_alignLeft="@+id/tv_comando_enviado"
-        android:layout_alignStart="@+id/tv_comando_enviado" />
+            <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/arrow_down_float"
+            android:id="@+id/btn_dere"
+            android:layout_column="2" />
 
 
+        </TableRow>
+    </TableLayout>
 </RelativeLayout>

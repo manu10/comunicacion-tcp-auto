@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,6 +36,10 @@ public class BehaviourFragment extends AppCompatDialogFragment implements View.O
     private String comando;
     private Button btn_command_hardc;
     private EditText comando_text;
+    private ImageButton btn_command_ret;
+    private ImageButton btn_command_ava;
+    private ImageButton btn_command_der;
+    private ImageButton btn_command_izq;
 
     public BehaviourFragment(){}
 
@@ -49,12 +54,20 @@ public class BehaviourFragment extends AppCompatDialogFragment implements View.O
         super.onCreateView(inflater, container, savedInstanceState);
         View view =  inflater.inflate(R.layout.fragment_main, container, false);
         if(view != null){
+            btn_command_ret = (ImageButton) view.findViewById(R.id.btn_retroc);
+            btn_command_ava = (ImageButton) view.findViewById(R.id.btn_avanzar);
+            btn_command_izq = (ImageButton) view.findViewById(R.id.btn_dere);
+            btn_command_der = (ImageButton) view.findViewById(R.id.btn_izq);
             btn_command = (Button) view.findViewById(R.id.btn_send_voice);
             btn_command_hardc = (Button) view.findViewById(R.id.btn_send_Hardcode);
             speech_output= (TextView) view.findViewById(R.id.tv_comando_enviado);
             comando_text= (EditText) view.findViewById(R.id.tf_comando);
             btn_command_hardc.setOnClickListener(this);
             btn_command.setOnClickListener(this);
+            btn_command_ava.setOnClickListener(this);
+            btn_command_ret.setOnClickListener(this);
+            btn_command_izq.setOnClickListener(this);
+            btn_command_der.setOnClickListener(this);
             toast = new Toast(getActivity().getApplicationContext());
         }
 
@@ -81,6 +94,14 @@ public class BehaviourFragment extends AppCompatDialogFragment implements View.O
             showGoogleInputDialog();
         }else if (view.getId() == R.id.btn_send_Hardcode){
             TcpSocketManager.sendDataToSocket(comando_text.getText().toString().toLowerCase());
+        }else if (view.getId() == R.id.btn_avanzar){
+            TcpSocketManager.sendDataToSocket("avanzar".toString());
+        }else if (view.getId() == R.id.btn_retroc){
+            TcpSocketManager.sendDataToSocket("retroceder".toString());
+        }else if (view.getId() == R.id.btn_dere){
+            TcpSocketManager.sendDataToSocket("derecha".toString());
+        }else if (view.getId() == R.id.btn_izq){
+            TcpSocketManager.sendDataToSocket("izquierda".toString());
         }
 
     }
@@ -90,7 +111,9 @@ public class BehaviourFragment extends AppCompatDialogFragment implements View.O
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
                 RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+//        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, language); TODO: USAR PREFERENCES!
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "es-ES");
+//        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-US");
         //intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
         try {
             startActivityForResult(intent, SPEECH_REQUEST_CODE);
